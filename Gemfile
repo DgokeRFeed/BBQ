@@ -5,9 +5,11 @@ ruby "3.1.2"
 
 gem "cssbundling-rails"
 gem "devise"
+gem "devise-i18n"
 gem "jsbundling-rails"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
+gem 'rails-i18n', '~> 7.0', '>= 7.0.5'
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"

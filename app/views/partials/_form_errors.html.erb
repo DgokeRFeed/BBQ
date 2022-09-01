@@ -4,8 +4,8 @@
 <div class="row">
   <div class="alert alert-danger d-flex justify-content-between align-content-center">
     <div>
-      <div class="lead buffer-bottom">
-        В вашей форме <%= errors.count %> <%= inclination(errors.count, "ошибка", "ошибки", "ошибок") %>
+      <div class="h4 buffer-bottom">
+        В вашей форме <%= errors.count %> ошибок
       </div>
       <ul>
         <% errors.full_messages.each do |message| %>

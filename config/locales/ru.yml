@@ -1,1 +1,27 @@
 ru:
+  activerecord:
+    models:
+      user: "Пользователь"
+      event: "Событие"
+    attributes:
+      user:
+        email: "Email"
+        name: "Имя"
+        username: "Никнейм"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+      event:
+        title: "Название"
+        address: "Адрес"
+        datetime: "Дата и время"
+        description: "Описание"
+  app:
+    name: "Движухи"
+    company: "SirPrinceska"
+  controllers:
+    users:
+      updated: "Изменения в аккаунте успешно сохранены"
+    events:
+      created: "Событие успешно сохранено"
+      updated: "Изменения в событии успешно сохранены"
+      destroyed: "Событие успешно удалено"
