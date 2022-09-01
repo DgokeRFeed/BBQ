@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
   has_many :events
 
-  before_validation :set_name_and_username, on: :create
   before_validation :downcase_attributes
 
   validates :name, presence: true, length: { maximum: 40 }
@@ -17,11 +19,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def set_name_and_username
-    self.name = "Челбасик#{rand(1337)}" if self.name.blank?
-    self.username = "shish#{Time.now.to_i}" if self.username.blank?
-  end
 
   def downcase_attributes
     username&.downcase!

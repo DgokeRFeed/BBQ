@@ -1,0 +1,13 @@
+<% if flash[:notice].present? %>
+  <div class="alert alert-info d-flex justify-content-between align-content-center mt-3">
+    <div><%= flash[:notice] %></div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger d-flex justify-content-between align-content-center mt-3">
+    <div><%= flash[:alert] %></div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
