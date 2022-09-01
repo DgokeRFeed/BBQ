@@ -5,7 +5,8 @@
   <div class="alert alert-danger d-flex justify-content-between align-content-center">
     <div>
       <div class="h4 buffer-bottom">
-        В вашей форме <%= errors.count %> ошибок
+        В вашей форме <%= errors.count
+                          t :errors, count: errors.count %>
       </div>
       <ul>
         <% errors.full_messages.each do |message| %>
