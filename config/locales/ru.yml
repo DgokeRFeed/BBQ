@@ -1,4 +1,7 @@
 ru:
+  app:
+    name: "Движухи"
+    company: "SirPrinceska"
   activerecord:
     models:
       user: "Пользователь"
@@ -15,9 +18,6 @@ ru:
         address: "Адрес"
         datetime: "Дата и время"
         description: "Описание"
-  app:
-    name: "Движухи"
-    company: "SirPrinceska"
   controllers:
     users:
       updated: "Изменения в аккаунте успешно сохранены"
@@ -25,6 +25,10 @@ ru:
       created: "Событие успешно сохранено"
       updated: "Изменения в событии успешно сохранены"
       destroyed: "Событие успешно удалено"
+  views:
+    confirm:
+      exit: "Вы уверены?"
+      delete: "Вы уверены? Отменить это действие будет невозможно!"
   errors:
     one: "%{count} ошибка"
     few: "%{count} ошибки"
