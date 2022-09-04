@@ -1,0 +1,20 @@
+<div class="comment-box mt-3">
+  <p class="mb-4"><%= comment.body %></p>
+  <div class="d-flex justify-content-between">
+    <span>
+      <% if comment.user.present? %>
+        <%= render partial: "users/user", object: comment.user %>
+      <% else %>
+        <storng><%= comment.user_name %></storng>
+      <% end %>
+      <em><%= l comment.created_at, format: :short %></em>
+    </span>
+    <% if current_user_can_edit?(comment) %>
+      <%= button_to bi_icon("trash"),
+                    event_comment_path(comment.event, comment),
+                    class: "btn btn-link",
+                    method: :delete,
+                    data: { confirm: t("views.confirm.delete") } %>
+    <% end %>
+  </div>
+</div>

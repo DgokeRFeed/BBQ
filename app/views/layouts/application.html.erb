@@ -19,9 +19,8 @@
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
               <li><%= link_to "Профиль", current_user, class: "btn nav-link link-secondary ms-3" %></li>
-              <li><%= button_to 'Выйти', destroy_user_session_path, :method => :delete,
-                                class: "btn nav-link ms-3",
-                                form: {data: {turbo_confirm: t("views.confirm.exit")}} %></li>
+              <li><%= button_to 'Выйти', destroy_user_session_path, method: :delete,
+                                class: "btn nav-link ms-3" %></li>
             <% else %>
               <li><%= link_to 'Войти', new_user_session_path, class: "btn nav-link link-secondary ms-3" %></li>
               <li><%= link_to 'Зарегистрироватьcя', new_user_registration_path,

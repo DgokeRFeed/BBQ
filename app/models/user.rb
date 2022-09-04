@@ -2,7 +2,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :events
+  has_many :events, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 
   before_validation :downcase_attributes
 
@@ -14,9 +16,7 @@ class User < ApplicationRecord
             format: { with: /\A[a-z\d]([a-z\d_]*[a-z\d])?\z/ },
             length: { maximum: 40 }
 
-  def to_param
-    username
-  end
+  after_commit :link_subscriptions, on: :create
 
   private
 
@@ -25,5 +25,7 @@ class User < ApplicationRecord
     email&.downcase!
   end
 
-
+  def link_subscriptions
+    Subscription.where(user_id: nil, user_email: self.email).update_all(user_id: self.id)
+  end
 end

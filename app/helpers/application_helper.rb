@@ -1,15 +1,13 @@
 module ApplicationHelper
   def user_avatar(user)
-    asset_path("user.png")
+    asset_path("default_user.png")
   end
 
-  def inclination(count, one, few, many)
-    return many if (count % 100).between?(11, 14)
+  def default_user_avatar
+    asset_path("default_user.png")
+  end
 
-    case count % 10
-    when 1 then one
-    when 2..4 then few
-    else many
-    end
+  def bi_icon(icon_class)
+    content_tag "span", "", class: "bi bi-#{icon_class}"
   end
 end
