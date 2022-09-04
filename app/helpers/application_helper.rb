@@ -1,6 +1,10 @@
 module ApplicationHelper
   def user_avatar(user)
-    asset_path("default_user.png")
+    if user.avatar?
+      user.avatar.url
+    else
+      default_user_avatar
+    end
   end
 
   def default_user_avatar

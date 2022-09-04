@@ -49,12 +49,22 @@
   height: 400px;
 }
 
-.img-icon,
-.img-icon-small {
+.user-avatar {
+  border-radius: 100%;
+}
+
+.img-icon {
   height: 50px;
   width: auto;
   border-radius: 50%;
 }
+
+.user-avatar .img-icon {
+  margin-top: -2px;
+  height: 20px;
+}
+
+
 
 .thumbnail {
   position: relative;
