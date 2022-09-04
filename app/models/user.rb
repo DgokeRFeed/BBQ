@@ -18,6 +18,10 @@ class User < ApplicationRecord
 
   after_commit :link_subscriptions, on: :create
 
+  def to_param
+    username
+  end
+
   private
 
   def downcase_attributes
