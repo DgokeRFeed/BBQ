@@ -61,14 +61,12 @@
       <div class="event-subscriptions">
         <h4>Пойдут:</h4>
         <div>
-
-            <% if @event.subscriptions.except(@new_subscription).any? %>
-              <p><%= render partial: "subscriptions/subscription",
-                            collection: @event.subscriptions.except(@new_subscription) %></p>
-            <% else %>
-              <p>На данное событие еще никто не подписался</p>
-            <% end %>
-
+          <% if @event.subscriptions.except(@new_subscription).any? %>
+            <p><%= render partial: "subscriptions/subscription",
+                          collection: @event.subscriptions.except(@new_subscription) %></p>
+          <% else %>
+            <p>На данное событие еще никто не подписался</p>
+          <% end %>
         </div>
       </div>
 

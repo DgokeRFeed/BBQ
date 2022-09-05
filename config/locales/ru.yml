@@ -15,6 +15,7 @@ ru:
       photo:
         photo: "Фотография"
       subscription:
+        user: "Пользователь"
         user_name: "Имя пользователя"
         user_email: "Email пользователя"
       user:
@@ -45,12 +46,12 @@ ru:
       created: "Фотография добавлена"
       destroyed: "Фотография удалена"
       error: "Ошибка с фотографией"
-
     subscription:
       created: "Вы подписались на событие"
       destroyed: "Вы отписались от события"
       error: "Возникла проблема с подпиской"
       unavailable_email: "Пользователь с таким Email уже зарегистрирован в системе"
+      author_already_subscribed: "Автор события не может быть подписан"
   views:
     confirm:
       delete: "Вы уверены? Отменить это действие будет невозможно!"
