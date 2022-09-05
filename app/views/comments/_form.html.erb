@@ -2,13 +2,13 @@
   <%= render partial: "partials/form_errors", locals: { model: comment } %>
 
   <div class="mt-3">
-    <%= form.label :body, "Комментарий", class: "form-label text-primary h4" %>
+    <%= form.label :body, class: "form-label text-primary h4" %>
     <%= form.text_area :body, class: "form-control" %>
   </div>
 
   <% unless signed_in? %>
     <div class="mt-3">
-      <%= form.label :user_name, "Имя", class: "form-label text-primary h4" %>
+      <%= form.label :user_name, class: "form-label text-primary h4" %>
       <%= form.text_field :user_name, class: "form-control" %>
     </div>
   <% end %>

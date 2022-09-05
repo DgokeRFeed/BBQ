@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, param: :username
   resources :events do
     resources :comments, only: %i[create destroy]
+    resources :photos, only: %i[create destroy]
     resources :subscriptions, only: %i[create destroy]
   end
 end

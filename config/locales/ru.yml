@@ -12,6 +12,8 @@ ru:
         address: "Адрес"
         datetime: "Дата и время"
         description: "Описание"
+      photo:
+        photo: "Фотография"
       subscription:
         user_name: "Имя пользователя"
         user_email: "Email пользователя"
@@ -27,6 +29,7 @@ ru:
       event: "Событие"
       subscription: "Подписка"
       user: "Пользователь"
+      photo: "Фотография"
   controllers:
     users:
       updated: "Изменения в аккаунте успешно сохранены"
@@ -38,6 +41,11 @@ ru:
       created: "Комментарий успешно создан"
       destroyed: "Комментарий успешно удален"
       error: "Ошибка с комментарием"
+    photo:
+      created: "Фотография добавлена"
+      destroyed: "Фотография удалена"
+      error: "Ошибка с фотографией"
+
     subscription:
       created: "Вы подписались на событие"
       destroyed: "Вы отписались от события"
