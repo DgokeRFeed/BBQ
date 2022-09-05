@@ -13,7 +13,7 @@ class Subscription < ApplicationRecord
   validates :user, uniqueness: { scope: :event_id }, if: -> { user.present? }
 
   validate :user_not_registered, unless: -> { user.present? }
-  validate :events_author_is_not_subscribed, if: -> { user.present? }
+  validate :events_author_is_not_subscribed
 
   def user_name
     user.present? ? user.name : super
