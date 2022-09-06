@@ -4,11 +4,6 @@
 
 <hr/>
 
-<%= t ".event" %>
-<h3><%= @event.title %></h3>
-
-<%= t ".datetime" %>
-<h4><%= l @event.datetime %></h4>
-
-<%= t ".owner" %>
-<h4><%= @event.user.name %></h4>
+<p><%= t ".event" %> <strong><%= @event.title %></strong></p>
+<p><%= t ".datetime" %> <strong><%= l @event.datetime, format: :long %></strong></p>
+<p><%= t ".owner" %> <strong><%= @event.user.name %></strong></p>
