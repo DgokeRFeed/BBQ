@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
 
   has_one_attached :avatar do |attachable|
-    attachable.variant :thumb, resize_to_limit: [100, 100]
-    attachable.variant :normal, resize_to_limit: [400, 400]
+    attachable.variant :thumb, resize_to_fill: [100, 100]
+    attachable.variant :normal, resize_to_fill: [400, 400]
   end
 
   before_validation :downcase_attributes

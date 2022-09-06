@@ -2,6 +2,7 @@ ru:
   app:
     company: "SirPrinceska"
     name: "Движухи"
+
   activerecord:
     attributes:
       comment:
@@ -25,12 +26,14 @@ ru:
         password: "Пароль"
         password_confirmation: "Подтверждение пароля"
         username: "Никнейм"
+
     models:
       comment: "Комментарий"
       event: "Событие"
       subscription: "Подписка"
       user: "Пользователь"
       photo: "Фотография"
+
   controllers:
     users:
       updated: "Изменения в аккаунте успешно сохранены"
@@ -52,10 +55,28 @@ ru:
       error: "Возникла проблема с подпиской"
       unavailable_email: "Пользователь с таким Email уже зарегистрирован в системе"
       author_already_subscribed: "Автор события не может быть подписан"
+
   views:
     confirm:
       delete: "Вы уверены? Отменить это действие будет невозможно!"
+
   errors:
     one: "%{count} ошибка"
     few: "%{count} ошибки"
     many: "%{count} ошибок"
+
+  event_mailer:
+    comment:
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    subscription:
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'

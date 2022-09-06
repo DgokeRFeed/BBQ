@@ -9,6 +9,7 @@ gem "devise"
 gem "devise-i18n"
 gem "image_processing"
 gem "jsbundling-rails"
+gem "mailjet"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 gem 'rails-i18n', '~> 7.0', '>= 7.0.5'
@@ -18,6 +19,7 @@ gem "turbo-rails"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "dotenv-rails"
   gem "sqlite3", "~> 1.4"
 end
 

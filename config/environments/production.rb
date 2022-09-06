@@ -19,6 +19,11 @@ Rails.application.configure do
   config.active_storage.variant_processor = :mini_magick
   config.active_storage.service = :yandex
 
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: "shishbbq.herokuapp.com"}
+
+
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
