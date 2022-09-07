@@ -6,7 +6,7 @@ class SubscriptionsController < ApplicationController
     @new_subscription = @event.subscriptions.build(subscription_params)
     @new_subscription.user = current_user
 
-    if @new_subscription.save
+    if check_captcha(@new_subscription) && @new_subscription.save
       EventMailer.subscription(@event, @new_subscription).deliver_now
       redirect_to @event, notice: t("controllers.subscription.created")
     else
@@ -39,4 +39,6 @@ class SubscriptionsController < ApplicationController
   def subscription_params
     params.fetch(:subscription, {}).permit(:user_name, :user_email)
   end
+
+
 end
