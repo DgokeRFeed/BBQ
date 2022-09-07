@@ -18,6 +18,10 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
   <div class="mt-3">
-    <%= form.submit "Сохранить", class: "btn btn-primary"%> или <%= link_to "Вернуться", :back %>
+    <%= form.label :pincode, class: "form-label text-primary h4" %>
+    <%= form.text_field :pincode, class: "form-control" %>
+  </div>
+  <div class="mt-3">
+    <%= form.submit "Сохранить", class: "btn btn-primary" %> или <%= link_to "Вернуться", :back %>
   </div>
 <% end %>

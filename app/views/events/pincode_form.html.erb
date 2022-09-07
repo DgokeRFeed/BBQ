@@ -1,0 +1,19 @@
+<div class="col-lg-6">
+  <h1 class="mt-3">Доступ только по пинкоду</h1>
+
+  <div class="mt-3">
+    <%= form_with data: { turbo: false } do |form| %>
+      <div class="mt-3">
+        <%= form.label :pincode, t("views.pincode.enter_pincode"), class: "form-label text-primary h4" %>
+        <%= form.text_field :pincode, class: "form-control" %>
+      </div>
+
+      <div class="mt-3">
+        <%= form.submit t("views.pincode.in"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <p class="mt-5"><%= link_to  t("views.pincode.to_home"), events_path %></p>
+  </div>
+</div>
+
