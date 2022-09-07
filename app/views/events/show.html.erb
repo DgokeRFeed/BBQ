@@ -38,9 +38,11 @@
                                                                 .order(created_at: :desc)
                                                                 .except(@new_photo) %>
         </div>
-        <div class="event-photo-form">
-          <%= render partial: "photos/form", locals: { photo: @new_photo || @event.photos.build } %>
-        </div>
+        <% if signed_in? %>
+          <div class="event-photo-form">
+            <%= render partial: "photos/form", locals: { photo: @new_photo || @event.photos.build } %>
+          </div>
+        <% end %>
       </div>
 
       <div class="event-comments mt-3">
@@ -80,3 +82,4 @@
     </div>
   </div>
 </div>
+a
