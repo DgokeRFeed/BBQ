@@ -39,8 +39,12 @@
                                                                 .except(@new_photo) %>
         </div>
         <% if signed_in? %>
-          <div class="event-photo-form">
+          <div class="event-photo-form mt-3">
             <%= render partial: "photos/form", locals: { photo: @new_photo || @event.photos.build } %>
+          </div>
+        <% else %>
+          <div class="alert alert-info mt-3">
+            <%= t "views.warning.add_photo" %>
           </div>
         <% end %>
       </div>
