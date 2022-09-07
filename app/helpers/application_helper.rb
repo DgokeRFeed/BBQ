@@ -4,23 +4,11 @@ module ApplicationHelper
   end
 
   def event_photo(event)
-    # photos = event.photos.persisted
-    #
-    # if photos.any?
-    #   photos.sample.photo
-    # else
-      asset_path("event.jpg")
-    # end
+    asset_path("event.jpg")
   end
 
   def event_photo_thumb(event)
-    # photos = event.photos.persisted
-    #
-    # if photos.any?
-    #   photos.sample.photo.variant(:thumb)
-    # else
-      asset_path("event_thumb.jpg")
-    # end
+    asset_path("event_thumb.jpg")
   end
 
   def default_user_avatar
