@@ -6,7 +6,6 @@
                       class: "event-background",
                       style: "background-image: url(#{event_photo(@event)})"
       %>
-<!--      #{event_photo(@event)}-->
       <div class="event-info-inner row">
         <div class="col-md-12">
           <div class="event-description">
@@ -60,6 +59,8 @@
     </div>
 
     <div class="col-md-4">
+      <div id="map" data-address="<%= @event.address %>" class="map-box mb-3">
+      </div>
       <div class="event-owner">
         <h4>Зовет:</h4>
         <p><%= render partial: "users/user", object: @event.user %></p>
