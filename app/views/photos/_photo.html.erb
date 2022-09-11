@@ -1,12 +1,7 @@
-<div class="event-photo mt-3 d-flex justify-content-start align-items-center">
-  <%= link_to (image_tag photo.photo.variant(:thumb)), photo.photo.url %>
-  <span class="mx-3">Добавил <%= render partial: "users/user", object: photo.user %></span>
-  <% if current_user_can_edit?(photo) %>
-    <%= button_to bi_icon("trash"),
-                  event_photo_path(photo.event, photo),
-                  class: "btn btn-link",
-                  method: :delete,
-                  data: { confirm: t("views.confirm.delete") }
-    %>
-  <% end %>
+<div class="mx-2 mb-4">
+  <%# image_title = "Добавил #{render partial: 'users/user', object: photo.user}" %>
+
+  <%= link_to image_tag(photo.photo.variant(:thumb)), photo.photo.url, data: {
+    lightbox: 'event-gallery'
+  } %>
 </div>

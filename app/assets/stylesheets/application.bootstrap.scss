@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import 'lightbox';
 
 .event-info {
   position: relative;
@@ -93,4 +94,12 @@
   width: 100%;
   height: 300px;
   border: 2px solid #666666;
+}
+
+#imagelightbox {
+  position: fixed;
+  z-index: 9999;
+
+  -ms-touch-action: none;
+  touch-action: none;
 }

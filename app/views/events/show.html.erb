@@ -32,7 +32,7 @@
   <div class="row">
     <div class="col-md-8">
       <div class="event-photos mt-3">
-        <div class="event-photos-gallery">
+        <div class="event-photos-gallery d-flex flex-row overflow-scroll">
           <%= render partial: "photos/photo", collection: @event.photos
                                                                 .order(created_at: :desc)
                                                                 .except(@new_photo) %>
