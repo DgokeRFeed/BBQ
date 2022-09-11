@@ -30,34 +30,6 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8">
-      <div class="event-photos mt-3">
-        <div class="event-photos-gallery d-flex flex-row overflow-scroll">
-          <%= render partial: "photos/photo", collection: @event.photos
-                                                                .order(created_at: :desc)
-                                                                .except(@new_photo) %>
-        </div>
-        <% if signed_in? %>
-          <div class="event-photo-form mt-3">
-            <%= render partial: "photos/form", locals: { photo: @new_photo || @event.photos.build } %>
-          </div>
-        <% else %>
-          <div class="alert alert-info mt-3">
-            <%= t "views.warning.add_photo" %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="event-comments mt-3">
-        <%= render partial: "comments/form", locals: { comment: @new_comment || @event.comments.build } %>
-        <div class="mt-3 mb-3">
-          <%= render partial: "comments/comment", collection: @event.comments
-                                                                    .order(created_at: :desc)
-                                                                    .except(@new_comment) %>
-        </div>
-      </div>
-    </div>
-
     <div class="col-md-4">
       <div id="map" data-address="<%= @event.address %>" class="map-box mb-3">
       </div>
@@ -84,6 +56,34 @@
                      locals: { subscription: @new_subscription || @event.subscriptions.build } %>
         </div>
       <% end %>
+    </div>
+
+    <div class="col-md-8">
+      <p class="text-primary h3">Галерея</p>
+      <div class="event-photos mt-3">
+        <div class="event-photos-gallery d-flex flex-row overflow-scroll">
+          <%= render partial: "photos/photo", collection: @event.photos
+                                                                .order(created_at: :desc)
+                                                                .except(@new_photo) %>
+        </div>
+        <% if signed_in? %>
+          <div class="event-photo-form mt-3">
+            <%= render partial: "photos/form", locals: { photo: @new_photo || @event.photos.build } %>
+          </div>
+        <% else %>
+          <div class="alert alert-info mt-3">
+            <%= t "views.warning.add_photo" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="event-comments mt-3">
+        <%= render partial: "comments/form", locals: { comment: @new_comment || @event.comments.build } %>
+        <div class="mt-3 mb-3">
+          <%= render partial: "comments/comment", collection: @event.comments
+                                                                    .order(created_at: :desc).except(@new_comment) %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
