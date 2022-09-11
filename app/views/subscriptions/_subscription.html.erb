@@ -1,17 +1,17 @@
 <span>
   <div class="user-avatar d-flex justify-content-start align-items-center">
-  <% if subscription.user.present? %>
-    <%= render partial: "users/user", object: subscription.user %>
-  <% else %>
-    <%= image_tag(default_user_avatar, class: "img-icon") %>
-    <storng class="mx-1"><%= subscription.user_name %></storng>
-  <% end %>
-  <% if current_user_can_edit?(subscription) %>
-    <%= button_to bi_icon("x-lg"),
-                  event_subscription_path(subscription.event, subscription),
-                  method: :delete,
-                  class: "btn btn-link",
-                  data: { confirm: t("views.confirm.delete") } %>
-  <% end %>
-    </div>
+      <% if subscription.user.present? %>
+        <%= render partial: "users/user", object: subscription.user %>
+      <% else %>
+        <%= image_tag(default_user_avatar, class: "img-icon") %>
+        <storng class="mx-1"><%= subscription.user_name %></storng>
+      <% end %>
+      <% if current_user_can_edit?(subscription) %>
+        <%= button_to bi_icon("x-lg"),
+                      event_subscription_path(subscription.event, subscription),
+                      method: :delete,
+                      class: "btn btn-link",
+                      data: { confirm: t("views.confirm.delete") } %>
+      <% end %>
+  </div>
 </span>
