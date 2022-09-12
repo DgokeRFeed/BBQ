@@ -14,7 +14,7 @@
                     event_comment_path(comment.event, comment),
                     class: "btn btn-link",
                     method: :delete,
-                    data: { confirm: t("views.confirm.delete") }
+                    form: { data: { turbo_confirm: t("views.confirm.delete") }}
       %>
     <% end %>
   </div>
