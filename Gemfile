@@ -7,6 +7,7 @@ gem "aws-sdk-s3"
 gem "cssbundling-rails"
 gem "devise"
 gem "devise-i18n"
+gem "dotenv-rails"
 gem "image_processing"
 gem "jsbundling-rails"
 gem "mailjet"
@@ -19,8 +20,7 @@ gem "stimulus-rails"
 gem "turbo-rails"
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "dotenv-rails"
+  gem "debug", platforms: %i[ mri mingw x64_mingw ] 
   gem "sqlite3", "~> 1.4"
 end
 
