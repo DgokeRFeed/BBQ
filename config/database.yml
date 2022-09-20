@@ -21,5 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  user: <%= Rails.application.credentials.dig(:postgresql, :user) %>
+  password: <%= Rails.application.credentials.dig(:postgresql, :password) %>
+  database: <%= Rails.application.credentials.dig(:postgresql, :database) %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
