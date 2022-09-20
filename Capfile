@@ -40,6 +40,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, "3.1.2"
 set :rbenv_ruby_dir, "/home/deploy/.rbenv/versions/3.1.2"
 set :rbenv_custom_path, "/home/deploy/.rbenv"
+set :rbenv_prefix, "/usr/bin/rbenv exec"
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
