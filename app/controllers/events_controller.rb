@@ -1,14 +1,19 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
-  before_action :set_event, only: %i[show]
-  before_action :set_current_user_event, only: %i[edit update destroy]
-  before_action :password_guard!, only: [:show]
+  before_action :set_event, except: %i[index new create]
+  # before_action :set_current_user_event, only: %i[edit update destroy]
+  before_action :password_guard!, only: %i[show]
+
+  after_action :verify_authorized, only: %i[edit update destroy show]
+  after_action :verify_policy_scoped, only: %i[index]
 
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
   end
 
   def show
+    authorize @event
+
     @new_comment = @event.comments.build(params[:comment])
     @new_subscription = @event.subscriptions.build(params[:subscription])
     @new_photo = @event.photos.build(params[:photo])
@@ -19,6 +24,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    authorize @event
   end
 
   def create
@@ -32,6 +38,8 @@ class EventsController < ApplicationController
   end
 
   def update
+    authorize @event
+
     if @event.update(event_params)
       redirect_to @event, notice: t("controllers.events.updated")
     else
@@ -40,6 +48,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    authorize @event
+
     @event.destroy
     redirect_to events_url, notice: t("controllers.events.destroyed")
   end
@@ -63,10 +73,10 @@ class EventsController < ApplicationController
     return true if signed_in? && current_user == @event.user
 
     if params[:pincode].present? && @event.pincode_valid?(params[:pincode])
-      cookies.signed["events_#{@event.id}_pincode"] = params[:pincode]
+      cookies.permanent["events_#{@event.id}_pincode"] = params[:pincode]
     end
 
-    unless @event.pincode_valid?(cookies.signed["events_#{@event.id}_pincode"])
+    unless @event.pincode_valid?(cookies.permanent["events_#{@event.id}_pincode"])
       flash.now[:alert] = t("controllers.events.wrong_pincode") if params[:pincode].present?
       render "pincode_form"
     end

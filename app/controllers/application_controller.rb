@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :current_user_can_edit?, :check_captcha
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
@@ -25,5 +29,10 @@ class ApplicationController < ActionController::Base
     else
       verify_recaptcha(model: model)
     end
+  end
+
+  def user_not_authorized
+    flash[:alert] = t('pundit.not_authorized')
+    redirect_to(request.referrer || root_path)
   end
 end
