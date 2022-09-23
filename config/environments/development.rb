@@ -65,4 +65,7 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: "localhost:3000"}
+
+  config.active_job.queue_adapter = :async
+  config.active_job.queue_name_prefix = "shishbbq_#{Rails.env}"
 end

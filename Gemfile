@@ -14,6 +14,7 @@ gem "puma", "~> 5.0"
 gem "pundit"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 gem "rails-i18n", "~> 7.0", ">= 7.0.5"
+gem "resque"
 gem "recaptcha", "~> 3.3", require: "recaptcha/rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
@@ -32,6 +33,8 @@ group :development do
   gem "capistrano-passenger"
   gem "capistrano-rbenv"
   gem "capistrano-bundler"
+  gem "capistrano-resque", require: false
+
   gem "ed25519", ">= 1.2", "< 2.0"
   gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"
   gem "web-console"

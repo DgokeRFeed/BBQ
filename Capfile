@@ -34,6 +34,7 @@ require "capistrano/rails"
 require "capistrano/rbenv"
 require "capistrano/bundler"
 require "capistrano/passenger"
+require "capistrano-passenger"
 
 set :rbenv_roles, :all
 set :rbenv_type, :user

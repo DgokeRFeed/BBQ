@@ -7,7 +7,7 @@ class SubscriptionsController < ApplicationController
     @new_subscription.user = current_user
 
     if check_captcha(@new_subscription) && @new_subscription.save
-      EventMailer.subscription(@event, @new_subscription).deliver_now
+      EventMailer.subscription(@event, @new_subscription).deliver_later
       redirect_to @event, notice: t("controllers.subscription.created")
     else
       render "events/show", alert: t("controllers.subscription.error")
