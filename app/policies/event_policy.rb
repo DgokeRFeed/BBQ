@@ -1,6 +1,6 @@
 class EventPolicy < ApplicationPolicy
   def update?
-    user_is_owner?(record)
+    user_is_owner?
   end
 
   def show?
@@ -8,20 +8,22 @@ class EventPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user_is_owner?(record)
+    user_is_owner?
   end
 
   class Scope < Scope
     def resolve
       if user.present?
-        scope.joins(:subscriptions).where(subscriptions: { user_id: user }) + scope.where(user: user)
+        scope.includes(:user, :subscriptions)
+             .where(subscriptions: { user: user })
+             .or(scope.where(user: user))
       end
     end
   end
 
   private
-
-  def user_is_owner?(event)
-    user.present? && (event.user == user)
+  
+  def user_is_owner?
+    record.user == user
   end
 end
