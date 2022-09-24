@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @new_comment.user = current_user
 
     if check_captcha(@new_comment) && @new_comment.save
-      notify_subscribers(@event, @new_comment)
+      SendingCommentToSubscribersJob.perform_later(@event, @new_comment)
       redirect_to @event, notice: t("controllers.comments.created")
     else
       render "events/show", alert: t("controllers.comments.error")
@@ -39,12 +39,5 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body, :user_name)
-  end
-
-  def notify_subscribers(event, comment)
-    all_emails = event.subscriptions.map(&:user_email) + [event.user.email] - [current_user&.email]
-    all_emails.each do |mail|
-      EventMailer.comment(event, comment, mail).deliver_later
-    end
   end
 end
