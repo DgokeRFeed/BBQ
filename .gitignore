@@ -35,3 +35,4 @@
 .idea
 public/uploads/
 .env
+dump.rdb

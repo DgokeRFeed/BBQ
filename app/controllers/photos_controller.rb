@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
     @new_photo.user = current_user
 
     if @new_photo.save
-      SendingPhotoToSubscribersJob.perform_later(@event, @new_photo)
+      SendingMailToSubscribersJob.perform_later(@new_photo)
       redirect_to @event, notice: t("controllers.photo.created")
     else
       render "events/show", alert: t("controllers.photo.error")

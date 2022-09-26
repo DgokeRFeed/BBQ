@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @new_comment.user = current_user
 
     if check_captcha(@new_comment) && @new_comment.save
-      SendingCommentToSubscribersJob.perform_later(@event, @new_comment)
+      SendingMailToSubscribersJob.perform_later(@new_comment)
       redirect_to @event, notice: t("controllers.comments.created")
     else
       render "events/show", alert: t("controllers.comments.error")
