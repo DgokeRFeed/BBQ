@@ -108,3 +108,8 @@ ru:
 
   pundit:
     not_authorized: "Вы не авторизированы на сайте"
+
+  devise:
+    omniauth_callbacks:
+      success: "Вы успешно вошли с помощью %{kind}"
+      failure: "Войти с помощью %{kind} не удалось! %{reason}"

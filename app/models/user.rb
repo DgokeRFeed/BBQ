@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable
+         :confirmable, :omniauthable, omniauth_providers: %i[github]
 
   has_many :events, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -30,6 +30,20 @@ class User < ApplicationRecord
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def self.from_omniauth(auth)
+    user = where(email: auth.info.email).first
+    return user if user.present?
+
+    where(uid: auth.uid, provider: auth.provider).first_or_create! do |user|
+      # Если создаём новую запись, прописываем email и пароль
+      user.name = auth.info.nickname
+      user.username = auth.info.nickname
+      user.email = auth.info.email
+      user.password = Devise.friendly_token.first(16)
+      user.skip_confirmation!
+    end
   end
 
   private
