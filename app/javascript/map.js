@@ -1,18 +1,23 @@
 document.addEventListener("turbo:load", () => {
-  ymaps.ready(function () {
-    if(document.getElementById("map")){
-      const address = document.getElementById("map").getAttribute("data-address");
+  ymaps.ready(init);
+  let myMap;
 
-      const myMap = new ymaps.Map("map", {
+  function init() {
+    if (document.getElementById("map")) {
+      document.getElementById("map").innerHTML = "";
+
+      address = document.getElementById("map").getAttribute("data-address");
+
+      myMap = new ymaps.Map("map", {
         center: [55.76, 37.64],
-        zoom: 8
+        zoom: 10
       });
 
-      const myGeocoder = ymaps.geocode(address);
+      myGeocoder = ymaps.geocode(address);
 
       myGeocoder.then(
         function (res) {
-          const coordinates = res.geoObjects.get(0).geometry.getCoordinates();
+          coordinates = res.geoObjects.get(0).geometry.getCoordinates();
 
           myMap.geoObjects.add(
             new ymaps.Placemark(
@@ -29,5 +34,5 @@ document.addEventListener("turbo:load", () => {
         }
       );
     }
-  })
+  }
 })
