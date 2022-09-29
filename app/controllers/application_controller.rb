@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Pundit
+  include Pundit::Authorization
 
   protect_from_forgery with: :exception
 
@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_can_edit?, :check_captcha
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def pundit_user
+    UserContext.new(current_user, params[:pincode], cookies)
+  end
 
   private
 
