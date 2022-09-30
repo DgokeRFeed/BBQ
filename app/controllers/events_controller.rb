@@ -17,6 +17,8 @@ class EventsController < ApplicationController
       render "pincode_form"
     end
 
+    cookies["events_#{@event.id}_pincode"] = params[:pincode] if params[:pincode].present?
+
     @new_comment = @event.comments.build(params[:comment])
     @new_subscription = @event.subscriptions.build(params[:subscription])
     @new_photo = @event.photos.build(params[:photo])

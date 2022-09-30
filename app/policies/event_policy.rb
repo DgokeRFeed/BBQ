@@ -8,9 +8,7 @@ class EventPolicy < ApplicationPolicy
 
     return true if @record.pincode.blank? || user_is_owner?
 
-    if @user.pincode.present? && @record.pincode_valid?(@user.pincode)
-      @user.cookies["events_#{@record.id}_pincode"] = @user.pincode
-    end
+    return true if @user.pincode.present? && @record.pincode_valid?(@user.pincode)
 
     @record.pincode_valid?(@user.cookies["events_#{@record.id}_pincode"])
   end
