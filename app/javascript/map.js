@@ -2,11 +2,12 @@ document.addEventListener("turbo:load", () => {
   ymaps.ready(init);
 
   function init() {
-    if (!document.getElementById("map")) return false
+    const mapEl = document.getElementById("map");
+    if (!mapEl) return false;
 
-    document.getElementById("map").innerHTML = "";
+    if (mapEl.firstChild) mapEl.removeChild(mapEl.firstChild);
 
-    const address = document.getElementById("map").getAttribute("data-address");
+    const address = mapEl.getAttribute("data-address");
 
     const myMap = new ymaps.Map("map", {
       center: [55.76, 37.64],
