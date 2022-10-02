@@ -273,7 +273,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :github,
                   Rails.application.credentials.dig(:omniauth, :github_auth_id),
-                  Rails.application.credentials.dig(:omniauth, :github_auth_secret)
+                  Rails.application.credentials.dig(:omniauth, :github_auth_secret),
+                  scope: "user:email"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
