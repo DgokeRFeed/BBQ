@@ -5,8 +5,6 @@ document.addEventListener("turbo:load", () => {
     const mapEl = document.getElementById("map");
     if (!mapEl) return false;
 
-    if (mapEl.firstChild) mapEl.removeChild(mapEl.firstChild);
-
     const address = mapEl.getAttribute("data-address");
 
     const myMap = new ymaps.Map("map", {
