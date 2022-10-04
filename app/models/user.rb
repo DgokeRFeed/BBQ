@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :omniauthable, omniauth_providers: %i[github]
+         :confirmable, :omniauthable, omniauth_providers: %i[github vkontakte]
 
   has_many :events, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -38,9 +38,8 @@ class User < ApplicationRecord
     return user if user.present?
 
     where(uid: auth.uid, provider: auth.provider).first_or_create! do |user|
-      # Если создаём новую запись, прописываем email и пароль
-      user.name = auth.info.nickname
-      user.username = auth.info.nickname
+      user.name = auth.info.name
+      user.username = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token.first(16)
       user.skip_confirmation!

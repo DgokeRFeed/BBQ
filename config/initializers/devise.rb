@@ -276,6 +276,11 @@ Devise.setup do |config|
                     Rails.application.credentials.dig(:omniauth, :github_auth_id_dev),
                     Rails.application.credentials.dig(:omniauth, :github_auth_secret_dev),
                     scope: "user:email"
+
+    config.omniauth :vkontakte,
+                    Rails.application.credentials.dig(:omniauth, :vk_auth_id_dev),
+                    Rails.application.credentials.dig(:omniauth, :vk_auth_secret_dev),
+                    scope: "email"
   end
 
   if Rails.env.production?
@@ -283,6 +288,11 @@ Devise.setup do |config|
                     Rails.application.credentials.dig(:omniauth, :github_auth_id),
                     Rails.application.credentials.dig(:omniauth, :github_auth_secret),
                     scope: "user:email"
+
+    config.omniauth :vkontakte,
+                    Rails.application.credentials.dig(:omniauth, :vk_auth_id),
+                    Rails.application.credentials.dig(:omniauth, :vk_auth_secret),
+                    scope: "email"
   end
 
   # ==> Warden configuration
