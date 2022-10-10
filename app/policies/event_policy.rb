@@ -5,9 +5,7 @@ class EventPolicy < ApplicationPolicy
 
   def show?
     return false unless @user.user.present?
-
     return true if @record.pincode.blank? || user_is_owner?
-
     return true if @user.pincode.present? && @record.pincode_valid?(@user.pincode)
 
     @record.pincode_valid?(@user.cookies["events_#{@record.id}_pincode"])

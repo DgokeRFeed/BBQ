@@ -16,7 +16,6 @@ class User < ApplicationRecord
   before_validation :downcase_attributes
 
   validates :name, presence: true, length: { maximum: 40 }
-
   validates :username,
             presence: true ,
             uniqueness: true,
